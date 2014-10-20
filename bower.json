@@ -7,7 +7,8 @@
   "dependencies": {
     "jquery": "latest",
     "underscore": "latest",
-    "underscore.string": "latest"
+    "underscore.string": "latest",
+    "bluebird": "~2.3.6"
   },
   "authors": [
     "Berend (.mpe) <dev@dotmpe.com>"
@@ -15,4 +16,3 @@
   "license": "GPLv3",
   "private": true
 }
-

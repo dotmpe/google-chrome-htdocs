@@ -17,9 +17,10 @@
   "background": {
     "persistent": false,
     "scripts": [
+    	"bg.js",
+    	"components/bluebird/js/browser/bluebird.js",
     	"omni-kwd.js",
-    	"page-action.js",
-    	"bg.js"
+    	"page-action.js"
     ]
   },
   "omnibox": {
@@ -29,12 +30,12 @@
     //"16": "16-full-color.png"
   },
   "permissions": [
-    "tabs"
+    "tabs",
     //"webRequest",
     //"webRequestBlocking",
     //"https://*/",
     //"http://*/",
-    //"<all_urls>"
+    "<all_urls>"
   ],
 //  "page_action": {
 //    "default_icon": "media/black-flat.png",
