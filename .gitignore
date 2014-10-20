@@ -1,0 +1,4 @@
+*.zip
+.*.sw[pon]
+.DS_Store
+chrome-extension/components

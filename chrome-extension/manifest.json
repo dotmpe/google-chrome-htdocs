@@ -1,0 +1,51 @@
+{
+  "manifest_version": 2,
+  "name": "Htdocs Chrome Extension",
+  "version": "0.0.1",
+  "description": "Retrieve/update metadata.",
+//  "content_scripts": [{
+//      "matches": ["<all_urls>"],
+//      // run_at: "document_idle", // default
+//      // all_frames: false, // default: top level only
+//      "js": [
+//          "components/underscore/underscore.js",
+//          "components/underscore.string/dist/underscore.string.min.js",
+//          "components/jquery/dist/jquery.js",
+//          "content-script.js"
+//      ]
+//  }],
+  "background": {
+    "persistent": false,
+    "scripts": [
+    	"omni-kwd.js",
+    	"page-action.js",
+    	"bg.js"
+    ]
+  },
+  "omnibox": {
+    "keyword": "htdocs"
+  },
+  "icons": {
+    //"16": "16-full-color.png"
+  },
+  "permissions": [
+    "tabs"
+    //"webRequest",
+    //"webRequestBlocking",
+    //"https://*/",
+    //"http://*/",
+    //"<all_urls>"
+  ],
+//  "page_action": {
+//    "default_icon": "media/black-flat.png",
+//    "default_popup": "action.html"
+//  },
+  "browser_action": {
+    "default_icon": "media/black-perspective.png",
+    "default_popup": "action.html"
+  },
+  "web_accessible_resources": [
+    "media/*.png"
+  ]
+}
+
