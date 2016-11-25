@@ -2,7 +2,7 @@
   "name": "google-chrome-refer-relation",
   "version": "0.0.1",
   "ignore": [
-    "chrome-extension/components"
+    "bower_components"
   ],
   "dependencies": {
     "jquery": "latest",

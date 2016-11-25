@@ -1,15 +1,22 @@
 // requires BlueBird or other Promise lib.
+// requires underscore and jQ
 console.debug('bg starting');
 
+
 var postUrls = function(urls) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "http://localhost:3000/chrome", true);
-	xhr.setRequestHeader('Content-Type', 'application/json');
-	xhr.onreadystatechange = function(xhrevent) {
-	}
-	xhr.send(JSON.stringify({urls:urls}));
-	//xhr.send(urls.join('\n'));
+
+  //$.ajax( {
+  //  url: "http://localhost:3000/chrome",
+  //  data: { 'urls': urls },
+  //  method: "POST",
+  //    error: function(jqXHR, textStatus, errorThrown) {
+  //      console.log("No connection");
+  //    },
+  //    success: function(data, textStatus, jqXHR) {
+  //    }
+  //} );
 };
+
 
 chrome.windows.getAll(null, function(windows) {
 
@@ -29,9 +36,14 @@ chrome.windows.getAll(null, function(windows) {
 			});
 		}));
 	}
+
 	Promise.all(tasks).then(function() {
-		postUrls(urls);
+	  console.log("Found open tabs:", urls);
+	  chrome.browserAction.setBadgeText( {
+	    text: String(urls.length)
+	  });
 	});
+
 });
 
 console.debug('bg loaded');

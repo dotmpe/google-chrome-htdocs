@@ -1,9 +1,28 @@
 <html>
 <head>
-<title>
-</title>
+<title></title>
+<script src="components/bluebird/js/browser/bluebird.js"></script>
+<script src="components/jquery/dist/jquery.min.js"></script>
+<script src="components/underscore/underscore-min.js"></script>
+<script src="browser-action.js"></script>
 </head>
 <body>
-	Browser.
+  <div style="width: 275px;">
+    <div>
+      <dl>
+        <dt>Selected text:</dt><dd id="selected-text"></dd>
+        <dt>Topics:</dt><dd>
+          <ol>
+            <li><a href="topic:Fantastic">Fantastic</a></li>
+          </ol>
+        </dd>
+      </dl>
+      <ul>
+        <li><a id="get-selection" href="#">get-selection</a></li>
+        <li><a id="new-topic" href="#">New topic for selection</a></li>
+        <li><a id="add-note" href="#">Add note to topic for selection</a></li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>

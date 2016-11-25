@@ -9,5 +9,8 @@ clean:
 	rm $(N).zip
 
 srctree:
-	@tree -I components
+	@tree -C \
+		-a \
+		-I "bower_components|.*.swp|.git"
+
 
