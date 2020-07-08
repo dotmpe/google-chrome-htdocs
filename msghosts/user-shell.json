@@ -1,0 +1,9 @@
+{
+  "name": "org.wtwta.user-shell.htdocs.chrome",
+  "description": "",
+  "path": "/srv/project-local/script-mpe/tools/chrome/cy-chrome",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://iieaindjlfdokjjdebbkjimhnlalollo/"
+  ]
+}

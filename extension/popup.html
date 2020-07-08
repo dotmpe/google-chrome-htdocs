@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Htdocs Extension Popup</title>
+    <link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="components/bootstrap/css/bootstrap-responsive.min.css" type="text/css">
+    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="components/underscore/underscore-min.js"></script>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div id="no-connection" style="display: none;" class="alert alert-danger">
+      No connection to active tab (Missing content-script, reload tab).
+    </div>
+    <div style="width: 550px;">
+      <div>
+        <dl>
+          <dt>Title:</dt><dd id="doc-title"></dd>
+
+          <dt>Selected text:</dt><dd id="selected-text"></dd>
+
+          <dt>Topics:</dt><dd>
+            <ol>
+              <li><a href="topic:Fantastic">Fantastic</a></li>
+            </ol>
+          </dd>
+        </dl>
+        <ul>
+          <li><a id="get-selection" href="#">get-selection</a></li>
+          <li><a id="get-title" href="#">get-title</a></li>
+          <li><a id="new-topic" href="#">New topic for selection</a></li>
+          <li><a id="add-note" href="#">Add note to topic for selection</a></li>
+        </ul>
+        <ul>
+          <li><a href="action.html">Other extension actions</a></li>
+          <li style="display: none;"><a id="check-connection" href="#">check-connection</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

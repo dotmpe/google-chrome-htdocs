@@ -1,14 +1,13 @@
 {
-  "name": "google-chrome-refer-relation",
+  "name": "google-chrome-htdocs",
   "version": "0.0.1",
-  "ignore": [
-    "bower_components"
-  ],
+  "componentsDirectory": "components",
   "dependencies": {
     "jquery": "latest",
     "underscore": "latest",
     "underscore.string": "latest",
-    "bluebird": "~2.3.6"
+    "bluebird": "~2.3.6",
+    "bootstrap": "bootstrap.css#^2.3.2"
   },
   "authors": [
     "Berend (.mpe) <dev@dotmpe.com>"

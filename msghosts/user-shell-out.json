@@ -1,0 +1,9 @@
+{
+  "name": "org.wtwta.user-shell.htdocs.chrome-out",
+  "description": "Simple shell script to capture messages from Chrome extensions",
+  "path": "/srv/project-local/script-mpe/tools/chrome/cy-chrome.sh",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://iieaindjlfdokjjdebbkjimhnlalollo/"
+  ]
+}

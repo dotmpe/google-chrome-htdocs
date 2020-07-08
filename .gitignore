@@ -1,4 +1,5 @@
 *.zip
 .*.sw[pon]
 .DS_Store
-bower_components
+/components
+/google-chrome-htdocs

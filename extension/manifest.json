@@ -8,21 +8,21 @@
       // run_at: "document_idle", // default
       // all_frames: false, // default: top level only
       "js": [
-          "components/underscore/underscore.js",
+          "components/underscore/underscore-min.js",
           "components/underscore.string/dist/underscore.string.min.js",
-          "components/jquery/dist/jquery.js",
-          "content-script.js"
+          "components/jquery/dist/jquery.min.js",
+          "content.js"
       ]
   }],
   "background": {
     "persistent": false,
     "scripts": [
-    	"bg.js",
-    	"components/bluebird/js/browser/bluebird.js",
-    	//"components/jquery/dist/jquery.min.js",
-    	//"components/underscore/underscore-min.js",
-    	//"omni-kwd.js",
-    	"page-action.js"
+      "bg.js"
+      //"components/bluebird/js/browser/bluebird.js",
+      //"components/jquery/dist/jquery.min.js",
+      //"components/underscore/underscore-min.js"
+      //"omni-kwd.js",
+      //"search.js"
     ]
   },
   //"omnibox": {
@@ -32,6 +32,7 @@
     //"16": "16-full-color.png"
   },
   "permissions": [
+    "storage",
     "tabs",
     //"webRequest",
     //"webRequestBlocking",
@@ -40,21 +41,16 @@
     "<all_urls>"
   ],
 
-  // either page or browser,
-  // page: Used for specific pages
-  //"page_action": {
-  //  "default_icon": "media/black-flat.png",
-  //  "default_popup": "action.html"
-  //},
-
   // browser: used for all pages
   "browser_action": {
-    "default_icon": "media/black-perspective.png",
-    "default_popup": "browser-action.html"
+    "default_icon": "media/grey-perspective.png",
+    "default_popup": "popup.html"
   },
 
-  "web_accessible_resources": [
-    "media/*.png"
-  ]
-}
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
 
+  "content_security_policy": "default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self'"
+}

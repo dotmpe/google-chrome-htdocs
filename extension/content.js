@@ -1,4 +1,9 @@
-
+/**
+ * The content-script is allowed to run during document-idle time,
+ * alongside each page (ie. for each open tab).
+ *
+ * It sets up to listen for messages from the popup or background scripts.
+ */
 
 function getSelectionText() {
     var text = "";
@@ -21,11 +26,10 @@ function getSelectionText() {
     };
 }
 
-
-//var browser_action_port = chrome.runtime.connect({
+//Var browser_action_port = chrome.runtime.connect({
 //  name: "x-browser-action"
 //});
-//browser_action_port.onMessage.addListener(function(msg) {
+//Browser_action_port.onMessage.addListener(function(msg) {
 //
 //  if (msg.name == 'get-selection') {
 //		browser_action_port.postMessage({
@@ -35,8 +39,6 @@ function getSelectionText() {
 //  }
 //});
 
-
-
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 
@@ -45,6 +47,19 @@ chrome.runtime.onMessage.addListener(
                 "from the extension");
 
 		switch (request.name) {
+
+      case 'ping':
+        sendResponse({
+          name: 'pong'
+        });
+        break;
+
+      case 'get-title':
+        sendResponse({
+          name: 'title',
+          text: window.document.title
+        });
+        break;
 
       case 'set-clipboard':
         break;
@@ -59,10 +74,12 @@ chrome.runtime.onMessage.addListener(
         break;
 
       default:
+        sendResponse({
+          name: request.name+'?',
+          type: 'error',
+          text: 'No such handler here'
+        });
         break;
     }
 	}
 );
-
-
-
