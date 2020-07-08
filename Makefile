@@ -1,5 +1,6 @@
+.PHONY: def dist install pack clean-unpacked clean srctree help
 def: dist
-	
+
 N := google-chrome-htdocs
 P := \
 			bootstrap/css/bootstrap.min.css \
@@ -7,12 +8,15 @@ P := \
 			bluebird/js/browser/bluebird.js \
 			jquery/dist/jquery.min.js \
 			underscore/underscore-min.js \
-      underscore.string/dist/underscore.string.min.js
+			underscore.string/dist/underscore.string.min.js
 
-dist: extension/ components/
+install:
+	bower install
+	make dist
+
+dist:
 	rsync -avzui --copy-links --delete extension/ $(N)
-	for p in $(P)\
-	; do \
+	for p in $(P) ; do \
 		mkdir -vp $(N)/components/$$(dirname $$p); \
 		cp components/$$p $(N)/components/$$p; \
 	done
@@ -29,6 +33,12 @@ clean: clean-unpacked
 srctree:
 	@tree -C \
 		-a \
-		-I "bower_components|.*.swp|.git"
+		-I "components|.*.swp|.git"
 
-
+help:
+	@printf \
+	'	install		download bower sources and make `dist`\n'\
+	'	dist (default)	copy source to ``./google-chrome-htdocs``)\n'\
+	'	pack		Zip ``./google-chrome-htdocs`` distribution package\n'\
+	'	clean-packed	Remove zipped package\n'\
+	'	clean		Remove zipped package and dist-directory\n'
