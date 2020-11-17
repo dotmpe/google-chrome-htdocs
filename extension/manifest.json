@@ -32,6 +32,8 @@
     //"16": "16-full-color.png"
   },
   "permissions": [
+    "bookmarks",
+    "nativeMessaging",
     "storage",
     "tabs",
     //"webRequest",
@@ -43,6 +45,7 @@
 
   // browser: used for all pages
   "browser_action": {
+    "default_title": "HtDocs (Popup) Default-Title",
     "default_icon": "media/grey-perspective.png",
     "default_popup": "popup.html"
   },

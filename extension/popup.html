@@ -2,21 +2,29 @@
 <html>
   <head>
     <title>Htdocs Extension Popup</title>
-    <link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="components/bootstrap/css/bootstrap-responsive.min.css" type="text/css">
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css" type="text/css">
     <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="components/underscore/underscore-min.js"></script>
+    <script src="functions/active-tab.js"></script>
+    <script src="functions/check-active-tab.js"></script>
+    <script src="functions/get-active-tab-info.js"></script>
     <script src="popup.js"></script>
   </head>
   <body>
-    <div id="no-connection" style="display: none;" class="alert alert-danger">
-      No connection to active tab (Missing content-script, reload tab).
+    <div class="jumbotron text-center">
+      <h3 id="doc-title">X-Browser-Action</h3>
+      <p class="small">&lt;<span id="about"></span>&gt;</p>
     </div>
-    <div style="width: 550px;">
+    <div class="container" style="width: 550px;">
+      <div id="no-be-connection" style="display: none;" class="alert alert-danger">
+        No connection to active backend.
+      </div>
+      <div id="no-tab-connection" style="display: none;" class="alert alert-danger">
+        No connection to active tab (Missing content-script? Try to reload tab).
+      </div>
       <div>
         <dl>
-          <dt>Title:</dt><dd id="doc-title"></dd>
-
           <dt>Selected text:</dt><dd id="selected-text"></dd>
 
           <dt>Topics:</dt><dd>
@@ -25,17 +33,19 @@
             </ol>
           </dd>
         </dl>
-        <ul>
-          <li><a id="get-selection" href="#">get-selection</a></li>
-          <li><a id="get-title" href="#">get-title</a></li>
-          <li><a id="new-topic" href="#">New topic for selection</a></li>
-          <li><a id="add-note" href="#">Add note to topic for selection</a></li>
-        </ul>
-        <ul>
-          <li><a href="action.html">Other extension actions</a></li>
-          <li style="display: none;"><a id="check-connection" href="#">check-connection</a></li>
-        </ul>
       </div>
+      <ul>
+        <li><a id="get-selection" href="#">get-selection</a></li>
+        <li><a id="get-title" href="#">get-title</a></li>
+        <li><a id="new-topic" href="#">New topic for selection</a></li>
+        <li><a id="add-note" href="#">Add note to topic for selection</a></li>
+      </ul>
+      <ul>
+        <li><a href="action.html">Other extension actions</a></li>
+        <li style="display: none;"><a id="check-be-connection" href="#">check-be-connection</a></li>
+        <li style="display: none;"><a id="check-tab-connection" href="#">check-tab-connection</a></li>
+      </ul>
     </div>
+    <textarea id="buffer" name="buffer"></textarea>
   </body>
 </html>

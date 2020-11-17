@@ -14,34 +14,16 @@ var plugin_title = "HtDocs"
 //  plugin_title = result;
 //});
 
-var open_urls;
-chrome.windows.getAll(null, function(windows) {
 
-	var urls = [],
-		tasks = []
-	;
+document.addEventListener('DOMContentLoaded', function() {
 
-	for (var i in windows) {
-		var w=windows[i];
-		tasks.push(new Promise(function(resolve, reject) {
-			chrome.tabs.getAllInWindow(w.id, function(tabs) {
-				for (var j in tabs) {
-					// console.log("Found tab", w.id, tabs[j].id, tabs[j].url);
-					urls.push(tabs[j].url);
-				}
-				resolve();
-			});
-		}));
-	}
+  connectHost1();
 
-	Promise.all(tasks).then(function() {
-	  open_urls = urls;
-	  console.log("Promise complete; Found open tabs:", urls);
-	  chrome.browserAction.setBadgeText( {
-	    text: String(urls.length)
-	  });
-	  chrome.browserAction.setTitle( {
-      title: plugin_title+":"+String(urls.length)+" open URLs"
-	  });
-	});
+  var open_urls;
+  getUrls(function(urls) {
+    console.log("Promise complete; Found open tabs:", urls);
+    open_urls = urls;
+    setUrlsUI(urls);
+  });
+  console.debug('Htdocs bg script started');
 });

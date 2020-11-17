@@ -32,21 +32,21 @@ function getSelectionText() {
 //Browser_action_port.onMessage.addListener(function(msg) {
 //
 //  if (msg.name == 'get-selection') {
-//		browser_action_port.postMessage({
+//    browser_action_port.postMessage({
 //      name: msg.name,
-//			selection: getSelectionText()
-//		});
+//      selection: getSelectionText()
+//    });
 //  }
 //});
 
 chrome.runtime.onMessage.addListener(
-	function(request, sender, sendResponse) {
+  function(request, sender, sendResponse) {
 
     console.log(sender.tab ?
                 "from a content script:" + sender.tab.url :
                 "from the extension");
 
-		switch (request.name) {
+    switch (request.name) {
 
       case 'ping':
         sendResponse({
@@ -81,5 +81,5 @@ chrome.runtime.onMessage.addListener(
         });
         break;
     }
-	}
+  }
 );

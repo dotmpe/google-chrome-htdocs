@@ -11,8 +11,8 @@ P := \
 			underscore.string/dist/underscore.string.min.js
 
 install:
+bower_components: bower.json
 	bower install
-	make dist
 
 dist:
 	rsync -avzui --copy-links --delete extension/ $(N)

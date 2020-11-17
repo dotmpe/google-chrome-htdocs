@@ -3,15 +3,6 @@
  * button is pressed.
  */
 
-var activeTab = function(cb) {
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function(tabs) {
-  	cb(tabs[0]);
-	});
-}
-
 var request_selection = function() {
   activeTab(function(tab) {
     chrome.tabs.sendMessage(tab.id, {
@@ -26,56 +17,28 @@ var request_selection = function() {
   });
 };
 
-var get_active_tab_title = function(cb) {
-
-	activeTab( function(tab) {
-    chrome.tabs.sendMessage(tab.id, {
-      name: 'get-title'
-    }, function(response) {
-    	console.log('get-title >', response);
-    	if (response.hasOwnProperty("name") && response.name == "title") {
-    		$('#doc-title').text(response.text);
-				if (cb) {
-					cb(response.text);
-				}
-			} else {
-    		show_no_connection();
-			}
-		});
-	});
+var show_no_be_connection = function() {
+  $('#no-be-connection').show();
+  $('#check-be-connection:parent').show();
 };
-
-var show_no_connection = function() {
-  $('#no-connection').show();
-	$('#check-connection:parent').show();
-};
-var hide_no_connection = function() {
-	$('#no-connection').hide();
-	$('#check-connection:parent').hide();
+var hide_no_be_connection = function() {
+  $('#no-be-connection').hide();
+  $('#check-be-connection:parent').hide();
 }
 
-var check_active_tab = function(cb) {
-
-	activeTab( function(tab) {
-    chrome.tabs.sendMessage(tab.id, {
-      name: 'ping'
-    }, function(response) {
-    	console.log('ping >', response);
-    	if (response.hasOwnProperty("name") && response.name == "pong") {
-				hide_no_connection();
-			} else {
-				show_no_connection();
-			}
-			if (cb) {
-    		cb(response.name == "pong");
-			}
-		});
-	});
+var show_no_tab_connection = function() {
+  $('#no-tab-connection').show();
+  $('#check-tab-connection:parent').show();
+};
+var hide_no_tab_connection = function() {
+  $('#no-tab-connection').hide();
+  $('#check-tab-connection:parent').hide();
 }
 
-$(document).ready(function() {
-	// Start logging to new console
-  console.log('Browser-Action Popup loading...');
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Start logging to new console
+  console.log('HtDocs (Browser-Action Popup) script started...');
 
   $('a#get-selection').click(function(evt) {
     request_selection();
@@ -85,13 +48,17 @@ $(document).ready(function() {
     get_active_tab_title();
   });
 
-  $('a#check-connection').click(function(evt) {
+  $('a#check-be-connection').click(function(evt) {
+    check_backend();
+  });
+
+  $('a#check-tab-connection').click(function(evt) {
     check_active_tab();
   });
 
   check_active_tab(function() {
-  	get_active_tab_title();
-  	request_selection();
+    get_active_tab_info();
+    request_selection();
   });
 
   console.log('Browser-Action Popup ready');

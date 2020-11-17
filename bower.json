@@ -1,7 +1,6 @@
 {
   "name": "google-chrome-htdocs",
   "version": "0.0.1",
-  "componentsDirectory": "components",
   "dependencies": {
     "jquery": "latest",
     "underscore": "latest",
